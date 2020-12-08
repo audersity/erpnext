@@ -322,10 +322,6 @@ def allocate_earned_leaves():
 			}, fieldname=['annual_allocation'])
 			if annual_allocation:
 				earned_leaves = flt(annual_allocation) / divide_by_frequency[e_leave_type.earned_leave_frequency]
-				if e_leave_type.rounding == "0.5":
-					earned_leaves = round(earned_leaves * 2) / 2
-				else:
-					earned_leaves = round(earned_leaves)
 
 				allocation = frappe.get_doc('Leave Allocation', allocation.name)
 				new_allocation = flt(allocation.total_leaves_allocated) + flt(earned_leaves)
